@@ -60,6 +60,20 @@ public class SeedData implements CommandLineRunner
 
         userService.save(u1);
 
+        //data
+        ArrayList<UserRoles> dataOnly = new ArrayList<>();
+        dataOnly.add(new UserRoles(new User(),
+                r3));
+        User u6 = new User("data",
+                "data",
+                "data@lambdaschool.local",
+                dataOnly);
+        u6.getUseremails()
+                .add(new Useremail(u6,
+                        "data@mymail.local"));
+        userService.save(u6);
+
+
         // data, user
         ArrayList<UserRoles> datas = new ArrayList<>();
         datas.add(new UserRoles(new User(),
@@ -86,7 +100,7 @@ public class SeedData implements CommandLineRunner
         users.add(new UserRoles(new User(),
                                 r2));
         User u3 = new User("barnbarn",
-                           "ILuvM4th!",
+                           "barnbarn!",
                            "barnbarn@lambdaschool.local",
                            users);
         u3.getUseremails()

@@ -8,7 +8,9 @@ public interface BookService {
 
     List<Book> findAll();
 
-    Book update(Book book);
+    Book update(Book book, long bookid);
 
-    void delete(long bookid, Book book);
+    void delete(long bookid);
+
+    void addBookAuthor(long bookid, long authorid);
 }
