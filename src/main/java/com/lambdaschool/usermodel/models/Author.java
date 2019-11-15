@@ -1,5 +1,7 @@
 package com.lambdaschool.usermodel.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Author extends Auditable {
     private String firstname;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("author")
     private List<Wrote> wrote = new ArrayList<>();
 
     public Author() {

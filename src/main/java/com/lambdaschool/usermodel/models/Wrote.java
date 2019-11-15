@@ -2,22 +2,24 @@ package com.lambdaschool.usermodel.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "wrote")
-public class Wrote extends Auditable {
+public class Wrote extends Auditable implements Serializable {
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "bookid")
+    @JsonIgnoreProperties("wrote")
     private Book book;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "authorid")
+    @JsonIgnoreProperties("wrote")
     private Author author;
 
     public Wrote() {

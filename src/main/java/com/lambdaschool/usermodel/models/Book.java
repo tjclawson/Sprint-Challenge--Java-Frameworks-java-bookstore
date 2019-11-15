@@ -20,9 +20,12 @@ public class Book extends Auditable {
     @Column(nullable = false, unique = true)
     private String ISBN;
 
+    @Transient
+    private boolean copyHasBeenSet = false;
     private int copy;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("book")
     private List<Wrote> wrote = new ArrayList<>();
 
     @ManyToOne
@@ -68,6 +71,7 @@ public class Book extends Auditable {
     }
 
     public void setCopy(int copy) {
+        copyHasBeenSet = true;
         this.copy = copy;
     }
 
